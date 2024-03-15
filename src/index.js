@@ -1,8 +1,17 @@
-const express = require('express');
-const app = express();
-const http = require('http').Server(app); // Utilizza express per creare il server HTTP
+var express = require('express');
+var app = express();
 
-const io = require('socket.io')(http);
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+  next();
+});
+
+var http = require('http');
+var server = http.createServer(app);
+var io = require('socket.io')(server, {log:false, origins:'*:*'}); // Modifica qui
 
 app.use(express.static('public'));
 
@@ -30,4 +39,4 @@ io.on('connection', (socket) => {
 });
 
 const port = process.env.PORT || 8080;
-http.listen(port, () => console.log(`listening on ${port}`));
+server.listen(port, () => console.log(`listening on ${port}`));
