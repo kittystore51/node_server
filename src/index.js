@@ -11,7 +11,12 @@ app.use(function(req, res, next) {
 
 var http = require('http');
 var server = http.createServer(app);
-var io = require('socket.io')(server, {log:false, origins:'*:*'}); // Modifica qui
+var io = require('socket.io')(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
 
 app.use(express.static('public'));
 
