@@ -1,5 +1,7 @@
 
-const socket = io('ws://node-server-18oh.onrender.com:8080');
+const socket = io('wss://node-server-18oh.onrender.com', {
+    cors: { origin: '*' }
+});
 
 socket.on('message', text => {
     document.querySelector('#command').innerHTML = '"' + text + '"';
