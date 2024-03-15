@@ -1,5 +1,5 @@
 
-const socket = io('ws://192.168.1.220:8080');
+const socket = io('ws://node-server-18oh.onrender.com:8080');
 
 socket.on('message', text => {
     document.querySelector('#command').innerHTML = '"' + text + '"';
