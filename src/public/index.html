@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invia comando</title>
+    <script src="https://cdn.socket.io/socket.io-3.0.0.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <section>
+        <h1>Comando attuale: </h1>
+        <span id="command"></span>
+    </section>
+    <section>
+        <div>
+            <input placeholder="Comando">
+            <button>Invia</button>
+        </div>
+        <span id="num_client"></span>
+    </section>    
+</body>
+<style>
+    *{
+        margin: 0;
+        box-sizing: border-box;
+    }
+    section{
+        margin: 5%;
+        text-align: center;
+    }
+    div{
+        margin: 10px 0;
+    }
+</style>
+</html>
